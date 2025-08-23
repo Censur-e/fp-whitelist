@@ -117,24 +117,49 @@ export default function ConfigPage({ isAuthenticated, setIsAuthenticated, onBack
   }
 
   const luaScript = `local HttpService = game:GetService("HttpService")
-local placeId = tostring(game.PlaceId)
-local productName = "Team-System"
+local placeId = game.PlaceId
+local nomProduit = "NomDuProduit"
+local lienWebhook = ""
 
-local function checkWhitelist()
-    local success, response = pcall(function()
-        return HttpService:PostAsync("https://votre-site.com/api/verify", 
-            HttpService:JSONEncode({placeId = placeId, productName = productName}), 
-            Enum.HttpContentType.ApplicationJson)
-    end)
-    
-    if success and HttpService:JSONDecode(response).authorized then
-        print("Authorized")
-    else
-        return
-    end
+local function verifierWhitelist()
+	local success, response = pcall(function()
+		return HttpService:PostAsync(
+			"https://fp-whitelist.vercel.app/api/verify",
+			HttpService:JSONEncode({placeId = placeId, productName = nomProduit}),
+			Enum.HttpContentType.ApplicationJson
+		)
+	end)
+
+	if success and response then
+		local decoded
+		local ok = pcall(function()
+			decoded = HttpService:JSONDecode(response)
+		end)
+
+		if ok and decoded and decoded.authorized then
+			print("[French Product WL] Autorisé")
+			return true
+		end
+	end
+
+	local message = {
+		["username"] = "French Product - WL",
+		["embeds"] = {{
+			["title"] = "Produit détecté sur un jeu non whitelisté",
+			["description"] = nomProduit .. " a été détecté sur " .. "https://www.roblox.com/games/" .. placeId,
+			["color"] = tonumber("0x00ff00")
+		}}
+	}
+
+	pcall(function()
+		HttpService:PostAsync(lienWebhook, HttpService:JSONEncode(message))
+	end)
+
+	return false
 end
 
-checkWhitelist()`
+verifierWhitelist()
+`
 
   if (!isAuthenticated) {
     return (
