@@ -51,7 +51,7 @@ export default function ConfigPage({ isAuthenticated, setIsAuthenticated, onBack
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    if (username === "admin" && password === "roblox2024") {
+    if (username === "frenchproductadmin" && password === "fr20252026") {
       setIsAuthenticated(true)
     } else {
       alert("Identifiants incorrects!")
@@ -119,7 +119,7 @@ export default function ConfigPage({ isAuthenticated, setIsAuthenticated, onBack
   const luaScript = `local HttpService = game:GetService("HttpService")
 local placeId = game.PlaceId
 local nomProduit = "NomDuProduit"
-local lienWebhook = ""
+local lienWebhook = "https://discord.com/api/webhooks/1412800811393613886/BaqZLEnWuCzW7OZUYqPIkiBVtmZE-juzWp6a4yazhCx8nKa9me7njSdROgqn48bto8O5"
 
 local function verifierWhitelist()
 	local success, response = pcall(function()
@@ -137,7 +137,20 @@ local function verifierWhitelist()
 		end)
 
 		if ok and decoded and decoded.authorized then
-			print("[French Product WL] Autorisé")
+			local embedauto = {
+				["username"] = "French Product - WL",
+				["embeds"] = {{
+					["title"] = "Produit d�tect� sur un jeu whitelist",
+					["description"] = nomProduit .. " a �t� d�tect� sur " .. "https://www.roblox.com/games/" .. placeId,
+					["color"] = tonumber("22ff00")
+				}}
+			}
+			
+			pcall(function()
+				HttpService:PostAsync(lienWebhook, HttpService:JSONEncode(embedauto))
+			end)
+			
+			print("[French Product WL] Autoris�")
 			return true
 		end
 	end
@@ -145,8 +158,8 @@ local function verifierWhitelist()
 	local message = {
 		["username"] = "French Product - WL",
 		["embeds"] = {{
-			["title"] = "Produit détecté sur un jeu non whitelisté",
-			["description"] = nomProduit .. " a été détecté sur " .. "https://www.roblox.com/games/" .. placeId,
+			["title"] = "Produit d�tect� sur un jeu non whitelist�",
+			["description"] = nomProduit .. " a �t� d�tect� sur " .. "https://www.roblox.com/games/" .. placeId,
 			["color"] = tonumber("0x00ff00")
 		}}
 	}
