@@ -20,6 +20,8 @@ import {
   LayoutGrid,
   List,
 } from "lucide-react"
+import ShaderBackground from "@/components/shader-background"
+import PulsingCircle from "@/components/pulsing-circle"
 
 interface AdminDashboardProps {
   onLogout: () => void
@@ -157,23 +159,25 @@ end`
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950">
-      {/* Header */}
-      <header className="border-b border-slate-800 bg-slate-900/50 backdrop-blur-xl sticky top-0 z-50">
+    <ShaderBackground>
+      <PulsingCircle />
+      <div className="min-h-screen">
+        {/* Header */}
+        <header className="border-b border-white/10 bg-black/30 backdrop-blur-xl sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <Shield className="w-8 h-8 text-blue-500" />
               <div>
                 <h1 className="text-xl font-bold text-white">Roblox Whitelist Manager</h1>
-                <p className="text-xs text-slate-400">Panneau d'administration</p>
+                <p className="text-xs text-white/60">Panneau d'administration</p>
               </div>
             </div>
           </div>
           <Button
             onClick={onLogout}
             variant="outline"
-            className="border-slate-700 text-slate-300 hover:bg-slate-800 hover:text-white"
+            className="border-white/30 text-white hover:bg-white/10"
           >
             <LogOut className="w-4 h-4 mr-2" />
             Déconnexion
@@ -185,45 +189,45 @@ end`
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <Card className="bg-gradient-to-br from-blue-600/10 to-blue-700/5 border-blue-500/20 backdrop-blur">
+          <Card className="bg-white/5 border-white/20 backdrop-blur-sm hover:bg-white/10 transition-all">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-blue-300">Total Produits</p>
+                  <p className="text-sm font-medium text-white/70">Total Produits</p>
                   <p className="text-3xl font-bold text-white mt-2">{whitelist.length}</p>
                 </div>
-                <Package className="w-12 h-12 text-blue-500/50" />
+                <Package className="w-12 h-12 text-white/30" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-violet-600/10 to-violet-700/5 border-violet-500/20 backdrop-blur">
+          <Card className="bg-white/5 border-white/20 backdrop-blur-sm hover:bg-white/10 transition-all">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-violet-300">Jeux Actifs</p>
+                  <p className="text-sm font-medium text-white/70">Jeux Actifs</p>
                   <p className="text-3xl font-bold text-white mt-2">{groupByGame().length}</p>
                 </div>
-                <Server className="w-12 h-12 text-violet-500/50" />
+                <Server className="w-12 h-12 text-white/30" />
               </div>
             </CardContent>
           </Card>
 
-          <Card className="bg-gradient-to-br from-green-600/10 to-green-700/5 border-green-500/20 backdrop-blur">
+          <Card className="bg-white/5 border-white/20 backdrop-blur-sm hover:bg-white/10 transition-all">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-green-300">Produits Uniques</p>
+                  <p className="text-sm font-medium text-white/70">Produits Uniques</p>
                   <p className="text-3xl font-bold text-white mt-2">{getUniqueProducts().length}</p>
                 </div>
-                <Shield className="w-12 h-12 text-green-500/50" />
+                <Shield className="w-12 h-12 text-white/30" />
               </div>
             </CardContent>
           </Card>
         </div>
 
         {/* Add New Product */}
-        <Card className="mb-6 bg-slate-900/50 backdrop-blur border-slate-800">
+        <Card className="mb-6 bg-white/5 backdrop-blur-sm border-white/20">
           <CardHeader>
             <CardTitle className="text-white flex items-center gap-2">
               <Plus className="w-5 h-5" />
@@ -236,19 +240,19 @@ end`
                 placeholder="Place ID (ex: 123456789)"
                 value={newPlaceId}
                 onChange={(e) => setNewPlaceId(e.target.value)}
-                className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500"
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 disabled={loading}
               />
               <Input
                 placeholder="Nom du produit (ex: Team-System)"
                 value={newProductName}
                 onChange={(e) => setNewProductName(e.target.value)}
-                className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500"
+                className="bg-white/10 border-white/20 text-white placeholder:text-white/50"
                 disabled={loading}
               />
               <Button
                 onClick={addToWhitelist}
-                className="bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white min-w-[140px]"
+                className="bg-white text-black hover:bg-white/90 min-w-[140px]"
                 disabled={loading}
               >
                 <Plus className="w-4 h-4 mr-2" />
@@ -259,7 +263,7 @@ end`
         </Card>
 
         {/* Roblox Script */}
-        <Card className="mb-6 bg-slate-900/50 backdrop-blur border-slate-800">
+        <Card className="mb-6 bg-white/5 backdrop-blur-sm border-white/20">
           <CardHeader>
             <div className="flex items-center justify-between">
               <CardTitle className="text-white">Script Roblox</CardTitle>
@@ -267,7 +271,7 @@ end`
                 onClick={copyScript}
                 variant="outline"
                 size="sm"
-                className="border-slate-700 text-slate-300 hover:bg-slate-800"
+                className="border-white/30 text-white hover:bg-white/10"
               >
                 {copied ? (
                   <>
@@ -284,8 +288,8 @@ end`
             </div>
           </CardHeader>
           <CardContent>
-            <div className="bg-slate-950/80 p-4 rounded-lg border border-slate-800">
-              <pre className="text-emerald-400 text-sm overflow-x-auto font-mono leading-relaxed">{scriptContent}</pre>
+            <div className="bg-black/50 p-4 rounded-lg border border-white/10">
+              <pre className="text-green-400 text-sm overflow-x-auto font-mono leading-relaxed">{scriptContent}</pre>
             </div>
           </CardContent>
         </Card>
@@ -293,25 +297,25 @@ end`
         {/* Search and Filters */}
         <div className="mb-6 flex flex-col sm:flex-row gap-4">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white/40 w-4 h-4" />
             <Input
               placeholder="Rechercher par Place ID ou produit..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-slate-900/50 border-slate-800 text-white placeholder:text-slate-500 pl-10"
+              className="bg-white/5 border-white/20 text-white placeholder:text-white/50 pl-10"
             />
           </div>
 
           <div className="flex items-center gap-2">
-            <div className="flex bg-slate-900/50 border border-slate-800 rounded-lg p-1">
+            <div className="flex bg-white/5 border border-white/20 rounded-lg p-1">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => setViewMode("games")}
                 className={`${
                   viewMode === "games"
-                    ? "bg-slate-800 text-white"
-                    : "text-slate-400 hover:text-white hover:bg-slate-800/50"
+                    ? "bg-white/20 text-white"
+                    : "text-white/60 hover:text-white hover:bg-white/10"
                 }`}
               >
                 <LayoutGrid className="w-4 h-4 mr-2" />
@@ -323,8 +327,8 @@ end`
                 onClick={() => setViewMode("list")}
                 className={`${
                   viewMode === "list"
-                    ? "bg-slate-800 text-white"
-                    : "text-slate-400 hover:text-white hover:bg-slate-800/50"
+                    ? "bg-white/20 text-white"
+                    : "text-white/60 hover:text-white hover:bg-white/10"
                 }`}
               >
                 <List className="w-4 h-4 mr-2" />
@@ -335,7 +339,7 @@ end`
             <select
               value={filterProduct}
               onChange={(e) => setFilterProduct(e.target.value)}
-              className="bg-slate-900/50 border border-slate-800 text-white rounded-lg px-4 py-2 outline-none cursor-pointer"
+              className="bg-white/5 border border-white/20 text-white rounded-lg px-4 py-2 outline-none cursor-pointer"
             >
               <option value="all">Tous les produits</option>
               {getUniqueProducts().map((product) => (
@@ -362,7 +366,7 @@ end`
               .map((group) => (
                 <Card
                   key={group.placeId}
-                  className="bg-slate-900/50 backdrop-blur border-slate-800 hover:border-slate-700 transition-all"
+                  className="bg-white/5 backdrop-blur-sm border-white/20 hover:border-white/30 transition-all"
                 >
                   <CardHeader>
                     <div className="flex items-start justify-between">
@@ -381,7 +385,7 @@ end`
                           <ExternalLink className="w-3 h-3" />
                         </a>
                       </div>
-                      <Badge className="bg-slate-800 text-slate-300 border-slate-700">
+                      <Badge className="bg-white/10 text-white border-white/20">
                         {group.entries.length} produit{group.entries.length > 1 ? "s" : ""}
                       </Badge>
                     </div>
@@ -391,7 +395,7 @@ end`
                       {group.entries.map((entry) => (
                         <div
                           key={entry.id}
-                          className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-all group"
+                          className="flex items-center justify-between p-3 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all group"
                         >
                           <div className="flex items-center gap-3">
                             <Package className="w-4 h-4 text-violet-400" />
@@ -418,7 +422,7 @@ end`
               ))}
           </div>
         ) : (
-          <Card className="bg-slate-900/50 backdrop-blur border-slate-800">
+          <Card className="bg-white/5 backdrop-blur-sm border-white/20">
             <CardHeader>
               <CardTitle className="text-white">Tous les produits ({filteredWhitelist.length})</CardTitle>
             </CardHeader>
@@ -427,7 +431,7 @@ end`
                 {filteredWhitelist.map((entry) => (
                   <div
                     key={entry.id}
-                    className="flex items-center justify-between p-4 bg-slate-800/50 rounded-lg border border-slate-700 hover:bg-slate-800 transition-all group"
+                    className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all group"
                   >
                     <div className="flex items-center gap-4">
                       <Server className="w-5 h-5 text-blue-400" />
@@ -443,7 +447,7 @@ end`
                             <ExternalLink className="w-4 h-4" />
                           </a>
                         </div>
-                        <p className="text-slate-500 text-sm">
+                        <p className="text-white/50 text-sm">
                           Ajouté le {new Date(entry.created_at).toLocaleDateString()}
                         </p>
                       </div>
@@ -466,6 +470,6 @@ end`
           </Card>
         )}
       </div>
-    </div>
+    </ShaderBackground>
   )
 }

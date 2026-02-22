@@ -6,6 +6,8 @@ import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Shield, Lock, User } from "lucide-react"
 import Image from "next/image"
+import ShaderBackground from "@/components/shader-background"
+import PulsingCircle from "@/components/pulsing-circle"
 
 interface LoginPageProps {
   onLogin: () => void
@@ -33,15 +35,10 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center p-4 relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-20 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500/5 rounded-full blur-3xl" />
-      </div>
-
-      <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center relative z-10">
+    <ShaderBackground>
+      <PulsingCircle />
+      <div className="min-h-screen flex items-center justify-center p-4 relative">
+        <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center relative z-10">
         {/* Left side - Hero Image */}
         <div className="hidden md:flex flex-col items-center justify-center space-y-6 p-8">
           <div className="relative w-full aspect-square max-w-md">
@@ -72,7 +69,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 
         {/* Right side - Login Form */}
         <div className="flex items-center justify-center">
-          <Card className="w-full max-w-md bg-slate-900/50 backdrop-blur-xl border-slate-800 shadow-2xl">
+          <Card className="w-full max-w-md bg-black/30 backdrop-blur-xl border-white/20 shadow-2xl">
             <CardHeader className="space-y-1 text-center pb-4">
               <div className="flex justify-center mb-4">
                 <div className="relative w-20 h-20 rounded-2xl overflow-hidden shadow-lg">
@@ -80,25 +77,25 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                 </div>
               </div>
               <CardTitle className="text-3xl font-bold text-white">Connexion</CardTitle>
-              <CardDescription className="text-slate-400 text-base">
+              <CardDescription className="text-white/60 text-base">
                 Accédez au panneau d'administration
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleLogin} className="space-y-5">
                 <div className="space-y-2">
-                  <label htmlFor="username" className="text-sm font-medium text-slate-300">
+                  <label htmlFor="username" className="text-sm font-medium text-white/90">
                     Identifiant
                   </label>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
                     <Input
                       id="username"
                       type="text"
                       placeholder="frenchproductadmin"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
-                      className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 pl-10 h-12 focus:border-blue-500 focus:ring-blue-500/20"
+                      className="bg-white/5 border-white/20 text-white placeholder:text-white/50 pl-10 h-12 focus:border-violet-500 focus:ring-violet-500/20"
                       disabled={loading}
                       required
                     />
@@ -106,18 +103,18 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="password" className="text-sm font-medium text-slate-300">
+                  <label htmlFor="password" className="text-sm font-medium text-white/90">
                     Mot de passe
                   </label>
                   <div className="relative">
-                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-500" />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
                     <Input
                       id="password"
                       type="password"
                       placeholder="••••••••"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 pl-10 h-12 focus:border-blue-500 focus:ring-blue-500/20"
+                      className="bg-white/5 border-white/20 text-white placeholder:text-white/50 pl-10 h-12 focus:border-violet-500 focus:ring-violet-500/20"
                       disabled={loading}
                       required
                     />
@@ -132,15 +129,15 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
 
                 <Button
                   type="submit"
-                  className="w-full h-12 bg-gradient-to-r from-blue-600 to-violet-600 hover:from-blue-700 hover:to-violet-700 text-white font-medium shadow-lg shadow-blue-500/20 transition-all duration-200"
+                  className="w-full h-12 bg-white text-black hover:bg-white/90 font-medium shadow-lg transition-all duration-200"
                   disabled={loading}
                 >
                   {loading ? "Connexion..." : "Se connecter"}
                 </Button>
               </form>
 
-              <div className="mt-6 pt-6 border-t border-slate-800">
-                <p className="text-xs text-slate-500 text-center">
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <p className="text-xs text-white/40 text-center">
                   Plateforme sécurisée de gestion de whitelist Roblox
                 </p>
               </div>
@@ -148,6 +145,6 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
           </Card>
         </div>
       </div>
-    </div>
+    </ShaderBackground>
   )
 }
