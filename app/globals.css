@@ -4,43 +4,31 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens to match dramatic lighting design brief */
-  --background: #000000; /* Pure black background */
-  --foreground: oklch(1 0 0); /* Pure white for text and highlights */
-  --card: oklch(0.95 0 0); /* Light gray for subtle backgrounds */
-  --card-foreground: oklch(0 0 0); /* Black text on light cards */
-  --popover: oklch(1 0 0); /* White for popover backgrounds */
-  --popover-foreground: oklch(0 0 0); /* Black text in popovers */
-  --primary: oklch(0.65 0.2 270); /* Violet accent for highlights */
-  --primary-foreground: oklch(1 0 0); /* White text on violet */
-  --secondary: oklch(0.95 0 0); /* Light gray for secondary elements */
-  --secondary-foreground: oklch(0 0 0); /* Black text on secondary */
-  --muted: oklch(0.25 0 0); /* Dark gray for muted elements */
-  --muted-foreground: oklch(0.95 0 0); /* Light gray text for muted */
-  --accent: oklch(0.65 0.2 270); /* Violet for interactive elements */
-  --accent-foreground: oklch(1 0 0); /* White text on accent */
-  --destructive: oklch(0.6 0.2 40); /* Amber for destructive actions */
-  --destructive-foreground: oklch(1 0 0); /* White text for destructive */
-  --border: oklch(1 0 0); /* White borders for contrast */
-  --input: oklch(0.95 0 0); /* Light gray for inputs */
-  --ring: oklch(0.65 0.2 270); /* Violet for focus rings */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.5rem; /* Softer rounded corners */
-  --sidebar: oklch(0 0 0); /* Black sidebar */
-  --sidebar-foreground: oklch(1 0 0); /* White sidebar text */
-  --sidebar-primary: oklch(0.65 0 0); /* Violet for primary sidebar */
-  --sidebar-primary-foreground: oklch(1 0 0); /* White text on sidebar primary */
-  --sidebar-accent: oklch(0.95 0 0); /* Light gray for sidebar accent */
-  --sidebar-accent-foreground: oklch(0 0 0); /* Black text on sidebar accent */
-  --sidebar-border: oklch(1 0 0); /* White sidebar borders */
-  --sidebar-ring: oklch(0.65 0.2 270); /* Violet for sidebar focus */
-  --font-instrument-serif: "Instrument Serif", serif; /* Instrument Serif font family configuration */
-  /* Added Figtree as the primary font variable */
-  --font-figtree: "Figtree", sans-serif; /* Figtree font family configuration */
+  --background: #020617; /* Slate-950 dark background */
+  --foreground: #f8fafc; /* Slate-50 for text */
+  --card: #1e293b; /* Slate-800 for cards */
+  --card-foreground: #f8fafc; /* Slate-50 text on cards */
+  --popover: #0f172a; /* Slate-900 for popovers */
+  --popover-foreground: #f8fafc; /* Slate-50 text in popovers */
+  --primary: #3b82f6; /* Blue-500 primary accent */
+  --primary-foreground: #ffffff; /* White text on primary */
+  --secondary: #8b5cf6; /* Violet-500 secondary accent */
+  --secondary-foreground: #ffffff; /* White text on secondary */
+  --muted: #334155; /* Slate-700 for muted elements */
+  --muted-foreground: #cbd5e1; /* Slate-300 text for muted */
+  --accent: #6366f1; /* Indigo-500 for interactive elements */
+  --accent-foreground: #ffffff; /* White text on accent */
+  --destructive: #ef4444; /* Red-500 for destructive actions */
+  --destructive-foreground: #ffffff; /* White text for destructive */
+  --border: #334155; /* Slate-700 borders */
+  --input: #1e293b; /* Slate-800 for inputs */
+  --ring: #3b82f6; /* Blue-500 for focus rings */
+  --chart-1: #3b82f6;
+  --chart-2: #8b5cf6;
+  --chart-3: #10b981;
+  --chart-4: #f59e0b;
+  --chart-5: #ef4444;
+  --radius: 0.75rem; /* Rounded corners */
 }
 
 .dark {
