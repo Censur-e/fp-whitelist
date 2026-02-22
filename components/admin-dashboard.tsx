@@ -467,8 +467,9 @@ end`
                 ))}
               </div>
             </CardContent>
-          </Card>
-        )}
+            </Card>
+          )}
+        </div>
       </div>
     </ShaderBackground>
   )
