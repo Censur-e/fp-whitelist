@@ -39,9 +39,9 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
       <PulsingCircle />
       <div className="min-h-screen flex items-center justify-center p-4 relative">
         <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center relative z-10">
-        {/* Left side - Hero Image */}
-        <div className="hidden md:flex flex-col items-center justify-center space-y-6 p-8">
-          <div className="relative w-full aspect-square max-w-md">
+          {/* Left side - Hero Image */}
+          <div className="hidden md:flex flex-col items-center justify-center space-y-6 p-8">
+            <div className="relative w-full aspect-square max-w-md">
             <Image
               src="/dashboard-hero.jpg"
               alt="Dashboard Security"
@@ -50,25 +50,25 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
               priority
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent rounded-2xl" />
-          </div>
-          <div className="text-center space-y-2">
-            <h1 className="text-4xl font-bold text-white">Roblox Whitelist</h1>
-            <p className="text-slate-400 text-lg">Gérez vos scripts en toute sécurité</p>
-          </div>
-          <div className="flex items-center gap-6 text-slate-300">
-            <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5 text-green-400" />
-              <span className="text-sm">Sécurisé</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Lock className="w-5 h-5 text-blue-400" />
-              <span className="text-sm">Protégé</span>
+            <div className="text-center space-y-2">
+              <h1 className="text-4xl font-bold text-white">Roblox Whitelist</h1>
+              <p className="text-slate-400 text-lg">Gérez vos scripts en toute sécurité</p>
+            </div>
+            <div className="flex items-center gap-6 text-slate-300">
+              <div className="flex items-center gap-2">
+                <Shield className="w-5 h-5 text-green-400" />
+                <span className="text-sm">Sécurisé</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Lock className="w-5 h-5 text-blue-400" />
+                <span className="text-sm">Protégé</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Right side - Login Form */}
-        <div className="flex items-center justify-center">
+          {/* Right side - Login Form */}
+          <div className="flex items-center justify-center">
           <Card className="w-full max-w-md bg-black/30 backdrop-blur-xl border-white/20 shadow-2xl">
             <CardHeader className="space-y-1 text-center pb-4">
               <div className="flex justify-center mb-4">
@@ -142,7 +142,8 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                 </p>
               </div>
             </CardContent>
-          </Card>
+            </Card>
+          </div>
         </div>
       </div>
     </ShaderBackground>
