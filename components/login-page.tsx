@@ -23,7 +23,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
     setLoading(true)
 
     setTimeout(() => {
-      if (username === "admin" && password === "roblox2024") {
+      if (username === "frenchproductadmin" && password === "fr20252026") {
         onLogin()
       } else {
         setError("Identifiant ou mot de passe incorrect")
@@ -95,7 +95,7 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
                     <Input
                       id="username"
                       type="text"
-                      placeholder="admin"
+                      placeholder="frenchproductadmin"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                       className="bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 pl-10 h-12 focus:border-blue-500 focus:ring-blue-500/20"
