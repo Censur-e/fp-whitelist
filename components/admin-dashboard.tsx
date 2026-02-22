@@ -164,7 +164,7 @@ end`
       <div className="min-h-screen">
         {/* Header */}
         <header className="border-b border-white/10 bg-black/30 backdrop-blur-xl sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-3">
               <Shield className="w-8 h-8 text-blue-500" />
@@ -182,11 +182,11 @@ end`
             <LogOut className="w-4 h-4 mr-2" />
             Déconnexion
           </Button>
-        </div>
-      </header>
+          </div>
+        </header>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-6 py-8">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <Card className="bg-white/5 border-white/20 backdrop-blur-sm hover:bg-white/10 transition-all">

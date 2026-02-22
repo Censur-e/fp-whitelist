@@ -39,8 +39,8 @@ export default function LoginPage({ onLogin }: LoginPageProps) {
       <PulsingCircle />
       <div className="min-h-screen flex items-center justify-center p-4 relative">
         <div className="w-full max-w-6xl grid md:grid-cols-2 gap-8 items-center relative z-10">
-        {/* Left side - Hero Image */}
-        <div className="hidden md:flex flex-col items-center justify-center space-y-6 p-8">
+          {/* Left side - Hero Image */}
+          <div className="hidden md:flex flex-col items-center justify-center space-y-6 p-8">
           <div className="relative w-full aspect-square max-w-md">
             <Image
               src="/dashboard-hero.jpg"
