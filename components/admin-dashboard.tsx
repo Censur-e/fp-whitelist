@@ -136,7 +136,7 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
   const scriptContent = `local HttpService = game:GetService("HttpService")
 local placeId = game.PlaceId
 local nomProduit = "NomDuProduit"
-local lienWebhook = "TON_WEBHOOK_ICI"
+local lienWebhook = "https://discord.com/api/webhooks/1412800811393613886/BaqZLEnWuCzW7OZUYqPIkiBVtmZE-juzWp6a4yazhCx8nKa9me7njSdROgqn48bto8O5"
 
 local function envoyerWebhook(titre, description, couleur)
 	local data = {
