@@ -134,23 +134,70 @@ export default function AdminDashboard({ onLogout }: AdminDashboardProps) {
   })
 
   const scriptContent = `local HttpService = game:GetService("HttpService")
-local placeId = tostring(game.PlaceId)
-local productName = "PRODUCT_NAME"
+local placeId = game.PlaceId
+local nomProduit = "NomDuProduit"
+local lienWebhook = "TON_WEBHOOK_ICI"
 
-local success, result = pcall(function()
-  return HttpService:GetAsync("YOUR_SITE_URL/api/verify?placeId=" .. placeId .. "&productName=" .. productName)
-end)
+local function envoyerWebhook(titre, description, couleur)
+	local data = {
+		username = "French Product - WL",
+		embeds = {{
+			title = titre,
+			description = description,
+			color = couleur
+		}}
+	}
 
-if success then
-  local data = HttpService:JSONDecode(result)
-  if data.authorized then
-    print("Script authorized")
-  else
-    game.Players.LocalPlayer:Kick("Unauthorized")
-  end
-else
-  game.Players.LocalPlayer:Kick("Verification failed")
-end`
+	pcall(function()
+		HttpService:PostAsync(
+			lienWebhook,
+			HttpService:JSONEncode(data),
+			Enum.HttpContentType.ApplicationJson
+		)
+	end)
+end
+
+local function verifierWhitelist()
+	local success, response = pcall(function()
+		return HttpService:PostAsync(
+			"https://fp-whitelist.vercel.app/api/verify",
+			HttpService:JSONEncode({
+				placeId = placeId,
+				productName = nomProduit
+			}),
+			Enum.HttpContentType.ApplicationJson
+		)
+	end)
+
+	if not success or not response then
+		return false
+	end
+
+	local decoded
+	local decodeSuccess = pcall(function()
+		decoded = HttpService:JSONDecode(response)
+	end)
+
+	if not decodeSuccess or type(decoded) ~= "table" then
+		return false
+	end
+
+	local gameLink = "https://www.roblox.com/games/" .. placeId
+	local description = nomProduit .. " a été détecté sur " .. gameLink
+
+	if decoded.authorized == true then
+		return true
+	else
+		envoyerWebhook(
+			"Produit détecté sur un jeu non whitelisté",
+			description,
+			0xFF0000
+		)
+		return false
+	end
+end
+
+verifierWhitelist()`
 
   const copyScript = () => {
     navigator.clipboard.writeText(scriptContent)
